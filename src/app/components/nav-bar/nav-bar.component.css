@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+.fill-space {
+  flex: 1 1 auto;
+}
+
+a , h1{
+  margin:15px;
+  color: #69F0AE;
+  text-decoration: none;
+  font-family: 'Dancing Script', cursive;
+}
