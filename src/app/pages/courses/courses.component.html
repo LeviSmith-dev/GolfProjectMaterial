@@ -1,3 +1,9 @@
-<p>
-  courses works!
-</p>
+<mat-form-field>
+  <mat-select (change)="getSingleCourse()" [(ngModel)]="selected" placeholder="Golf Course">
+    <mat-option *ngFor="let course of course"  [value]="course.id">
+      {{course.name| uppercase}}
+    </mat-option>
+  </mat-select>
+  <app-course *ngIf="golfCourse"></app-course>
+</mat-form-field>
+
