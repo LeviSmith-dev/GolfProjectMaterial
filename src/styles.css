@@ -2,3 +2,8 @@
 
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+.font {
+  font-family: 'Dancing Script', cursive;
+}

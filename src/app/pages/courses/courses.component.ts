@@ -6,13 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  course: any;
+  public course: any;
   selected: any;
   tee_types: any;
-  golfCourse: any;
-  players: number = 4;
+  public golfCourse: any;
   player: string;
-  tee_type: string;
 
   constructor(private courseService: CourseService) {
   }

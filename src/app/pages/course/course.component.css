@@ -1,0 +1,25 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.card {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.fill-space {
+  flex: 1 1 auto;
+}
+

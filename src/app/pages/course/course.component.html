@@ -1,1 +1,19 @@
-
+<mat-card class="card" [@transition]="state" (onLoad)="toggleState()">
+  <mat-card-header>
+    <h1 class="font">
+      {{golfCourse.name}}
+    </h1>
+  </mat-card-header>
+  <mat-card-content class="align-center">
+    <img *ngIf="golfCourse.thumbnail" src="{{golfCourse.thumbnail}}">
+    <p *ngIf="golfCourse.addr_1">Address: {{golfCourse.addr_1}}</p>
+    <p *ngIf="golfCourse.city">City: {{golfCourse.city}}</p>
+    <p *ngIf="golfCourse.fees">Cost: {{golfCourse.fees}}</p>
+    <p *ngIf="golfCourse.phone">Phone #: {{golfCourse.phone}}</p>
+  </mat-card-content>
+  <div>
+    <button mat-button color="primary"><a href="{{golfCourse?.website}}" target="_blank">Website</a></button>
+    <span class="fill-space"></span>
+    <button [(ngModel)]="courseId" mat-raised-button color="primary" [value]="golfCourse.id">Let's Go Golfing!</button>
+  </div>
+</mat-card>

@@ -4,6 +4,7 @@
       {{course.name| uppercase}}
     </mat-option>
   </mat-select>
-  <app-course *ngIf="golfCourse"></app-course>
 </mat-form-field>
+
+<app-course *ngIf='golfCourse' [golfCourse]="golfCourse"></app-course>
 
