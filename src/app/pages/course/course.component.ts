@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { pageTransition } from '../../animation.services/page-transition';
+import {Router} from '@angular/router';
+
 
 
 @Component({
@@ -10,9 +12,8 @@ import { pageTransition } from '../../animation.services/page-transition';
 })
 export class CourseComponent implements OnInit {
   state: string = 'in';
-  courseId: any;
   @Input() golfCourse: any;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
@@ -21,7 +22,7 @@ export class CourseComponent implements OnInit {
     this.state = this.state === 'out' ?'in': 'out';
   }
 
-  buildCard(){
-
+  buildCard(golfCourse){
+    this.router.navigate([`scorecard/${this.golfCourse.id}`]);
   }
 }

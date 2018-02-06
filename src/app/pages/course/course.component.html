@@ -10,10 +10,14 @@
     <p *ngIf="golfCourse.city">City: {{golfCourse.city}}</p>
     <p *ngIf="golfCourse.fees">Cost: {{golfCourse.fees}}</p>
     <p *ngIf="golfCourse.phone">Phone #: {{golfCourse.phone}}</p>
+    <p mat-button color="primary"><a href="{{golfCourse?.website}}" target="_blank">Website</a></p>
   </mat-card-content>
   <div>
-    <button mat-button color="primary"><a href="{{golfCourse?.website}}" target="_blank">Website</a></button>
+
     <span class="fill-space"></span>
-    <button [(ngModel)]="courseId" mat-raised-button color="primary" [value]="golfCourse.id">Let's Go Golfing!</button>
+    <button (click)="buildCard()" mat-raised-button color="primary">
+      Lets Go Golfing!
+    </button>
+    <!--<button mat-raised-button color="primary" [value]="golfCourse" ><a routerLink="['/scorecard', golfCourse.id]">Let's Go Golfing!</a></button>-->
   </div>
 </mat-card>

@@ -4,18 +4,19 @@ import { CommonModule } from '@angular/common';
 import {CoursesComponent} from '../pages/courses/courses.component';
 // import {CourseComponent} from '../pages/course/course.component';
 import {ScorecardComponent} from '../components/scorecard/scorecard.component';
+import {CourseComponent} from '../pages/course/course.component';
 
 const routes: Routes = [
   {
     path: 'courses',
     component: CoursesComponent
   },
-  // {
-  //   path: 'courses/:id',
-  //   component: CourseComponent
-  // },
   {
-    path: 'scorecard',
+    path: 'courses/:id',
+    component: CourseComponent
+  },
+  {
+    path: 'scorecard/:id',
     component: ScorecardComponent
   },
   {
