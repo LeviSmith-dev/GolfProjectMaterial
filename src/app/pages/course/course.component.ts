@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import { pageTransition } from '../../animation.services/page-transition';
 import {Router} from '@angular/router';
 
@@ -24,5 +24,7 @@ export class CourseComponent implements OnInit {
 
   buildCard(golfCourse){
     this.router.navigate([`scorecard/${this.golfCourse.id}`]);
+
+    // this.notify.emit(golfCourse);
   }
 }

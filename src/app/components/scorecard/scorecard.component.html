@@ -1,4 +1,12 @@
-<div class="example-container mat-elevation-z8">
+<mat-form-field>
+  <mat-select (change)="buildCard()" [(ngModel)]="teeType" placeholder="Chose Tee Type">
+    <mat-option *ngFor="let tee_type of tee_types" [value]="tee_type.id">
+      {{tee_type.tee_type}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div  *ngIf="teeType" class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
 
     <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">

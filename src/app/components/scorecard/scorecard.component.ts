@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
+import {ActivatedRoute} from '@angular/router';
+import {CourseService} from '../../pages/get-courses.service';
+
 
 @Component({
   selector: 'app-scorecard',
@@ -7,13 +10,26 @@ import { MatTableDataSource } from '@angular/material';
   styleUrls: ['./scorecard.component.css']
 })
 export class ScorecardComponent implements OnInit {
+  private sub: any;
+  id: number;
+  selectedCourse: any;
+  tee_types: any;
+  teeType: any;
+  numOfHoles: any[];
+  par: number;
   displayedColumns = ['player', '1', '2', '3', 'total'];
   dataSource = new MatTableDataSource<any>(SCORECARD_DATA);
-  numOfHoles: number = 9;
+
   playerName:string =' ';
-  constructor() { }
+
+  constructor(private route: ActivatedRoute, private courseService: CourseService) {}
+
   ngOnInit() {
-    this.getScoreCards();
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params['id'];
+    })
+    this.getCourse(this.id);
+
   }
 
   getScoreCards() {
@@ -30,6 +46,24 @@ export class ScorecardComponent implements OnInit {
   createNewPlayer() {
     this.dataSource.data.push({ "player": this.playerName, "1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0, "total": 0 })
     this.dataSource = new MatTableDataSource<any>(this.dataSource.data)
+  }
+
+  getCourse(id){
+    this.courseService.getSelectedCourse(id)
+      .subscribe((course: any) => {
+        this.selectedCourse = course.course;
+        this.tee_types = course.course.tee_types;
+        this.numOfHoles = course.course.holes;
+        // this.par = course.course.tee_types.tee_type.par;
+        console.log(this.selectedCourse);
+        console.log(this.tee_types);
+        console.log(this.numOfHoles);
+        // console.log(this.par);
+      })
+  }
+
+  buildCard(){
+
   }
 
 }

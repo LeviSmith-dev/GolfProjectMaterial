@@ -33,7 +33,7 @@ export class CourseService {
 
   getSelectedCourse(courseId: number): Observable<any>{
     return this.http
-      .get<any>(this.url + '/' + courseId)
+      .get<any>(`${this.golfCourseUrl}/${courseId}`)
       .pipe(catchError(this.handleError));
   }
 }
