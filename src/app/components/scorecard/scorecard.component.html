@@ -6,15 +6,25 @@
   </mat-select>
 </mat-form-field>
 
-<div  *ngIf="teeType" class="example-container mat-elevation-z8">
+<div class="new-player" *ngIf="teeType">
+  <mat-form-field >
+    <input matInput placeholder="Player" [(ngModel)]="playerName">
+  </mat-form-field>
+  <button mat-button color="primary"
+          (click)="[addAnotherPlayer(), createNewPlayer()]">Add Player</button>
+</div>
+
+
+
+<div class="example-container mat-elevation-z8" *ngIf="teeType">
   <mat-table #table [dataSource]="dataSource">
 
     <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
       <mat-header-cell *matHeaderCellDef> {{col | uppercase}} </mat-header-cell>
-      <!-- <mat-cell *matCellDef="let scorecard"> {{scorecard[col]}} </mat-cell> -->
-      <mat-cell *matCellDef="let scorecard">
-        <mat-form-field>
-          <input [name]="col" matInput [(ngModel)]="scorecard[col]">
+       <mat-cell *matCellDef="let holes"> {{holes[col]}} </mat-cell>
+      <mat-cell *matCellDef="let scorecard;">
+        <mat-form-field *ngFor="let hole of holes">
+          <input  [name]="col" matInput [(ngModel)]="scorecard[col]">{{hole.hole_num}}
         </mat-form-field>
       </mat-cell>
     </ng-container>
@@ -22,12 +32,5 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let score; columns: displayedColumns;"></mat-row>
   </mat-table>
-
-  <div class="new-player">
-    <mat-form-field>
-      <input name="player" matInput placeholder="Player" [(ngModel)]="playerName">
-    </mat-form-field>
-    <button mat-button mat-raised-button (click)="createNewPlayer()">New Player</button>
-  </div>
 
 </div>

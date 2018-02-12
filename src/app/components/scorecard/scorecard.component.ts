@@ -15,9 +15,15 @@ export class ScorecardComponent implements OnInit {
   selectedCourse: any;
   tee_types: any;
   teeType: any;
-  numOfHoles: any[];
+  numOfHoles: any[]gst
+  ;
   par: number;
-  displayedColumns = ['player', '1', '2', '3', 'total'];
+  holes = this.numOfHoles;
+  displayedColumns = [
+    'player',
+    'holes',
+    'total'
+  ];
   dataSource = new MatTableDataSource<any>(SCORECARD_DATA);
 
   playerName:string =' ';
@@ -44,7 +50,8 @@ export class ScorecardComponent implements OnInit {
   }
 
   createNewPlayer() {
-    this.dataSource.data.push({ "player": this.playerName, "1": 0, "2": 0, "3": 0, "4": 0, "5": 0, "6": 0, "7": 0, "8": 0, "9": 0, "total": 0 })
+    this.dataSource.data.push({ "player": this.playerName, holes: this.numOfHoles })
+    console.log(this.numOfHoles);
     this.dataSource = new MatTableDataSource<any>(this.dataSource.data)
   }
 
@@ -53,7 +60,7 @@ export class ScorecardComponent implements OnInit {
       .subscribe((course: any) => {
         this.selectedCourse = course.course;
         this.tee_types = course.course.tee_types;
-        this.numOfHoles = course.course.holes;
+        this.numOfHoles = course.course.holes.hole_num;
         // this.par = course.course.tee_types.tee_type.par;
         console.log(this.selectedCourse);
         console.log(this.tee_types);
@@ -66,21 +73,17 @@ export class ScorecardComponent implements OnInit {
 
   }
 
+  addAnotherPlayer(){
+    console.log('In add input');
+  }
+
 }
 
 
 const SCORECARD_DATA: any[] = [
   {
     player: 'John',
-    "1": 0,
-    "2": 0,
-    "3": 0,
-    "4": 0,
-    "5": 0,
-    "6": 0,
-    "7": 0,
-    "8": 0,
-    "9": 0,
+    holes: this.numOfHoles,
     total: 0
   }
 ];
