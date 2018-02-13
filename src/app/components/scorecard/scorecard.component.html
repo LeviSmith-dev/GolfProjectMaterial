@@ -6,6 +6,13 @@
   </mat-select>
 </mat-form-field>
 
+<div class="new-player">
+  <mat-form-field>
+    <input name="player" matInput placeholder="Player" [(ngModel)]="playerName">
+  </mat-form-field>
+  <button mat-button mat-raised-button (click)="createNewPlayer()">New Player</button>
+</div>
+
 <div  *ngIf="teeType" class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource">
 
@@ -23,11 +30,6 @@
     <mat-row *matRowDef="let score; columns: displayedColumns;"></mat-row>
   </mat-table>
 
-  <div class="new-player">
-    <mat-form-field>
-      <input name="player" matInput placeholder="Player" [(ngModel)]="playerName">
-    </mat-form-field>
-    <button mat-button mat-raised-button (click)="createNewPlayer()">New Player</button>
-  </div>
+
 
 </div>
