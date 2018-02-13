@@ -5,7 +5,7 @@ import { PagesModule } from './pages/pages.module';
 import { ComponentsModule } from './components/components.module';
 import { MaterialModule } from './material/material.module';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { AngularFireModule} from 'angularfire2';
+import { AngularFireModule } from 'angularfire2';
 import { AppComponent } from './app.component';
 import {environment} from '../environments/environment';
 

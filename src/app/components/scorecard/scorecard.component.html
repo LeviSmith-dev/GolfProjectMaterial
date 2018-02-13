@@ -1,0 +1,35 @@
+
+
+<mat-form-field>
+  <mat-select (change)="buildCard()" [(ngModel)]="teeType" placeholder="Chose Tee Type">
+    <mat-option *ngFor="let tee_type of tee_types" [value]="tee_type.id">
+      {{tee_type.tee_type}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="new-player">
+  <mat-form-field>
+    <input name="player" matInput placeholder="Player" [(ngModel)]="playerName">
+  </mat-form-field>
+  <button mat-button mat-raised-button (click)="createNewPlayer()">New Player</button>
+</div>
+
+<div  *ngIf="teeType" class="example-container mat-elevation-z8">
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <ng-container [matColumnDef]="col" *ngFor="let col of displayedColumns">
+      <mat-header-cell *matHeaderCellDef> {{col | uppercase}} </mat-header-cell>
+      <mat-cell *matCellDef="let holes"> {{holes[col]}} </mat-cell>
+      <mat-cell *matCellDef="let scorecard;">
+        <mat-form-field *ngFor="let hole of holes">
+          <input  [name]="col" matInput [(ngModel)]="scorecard[col]">{{hole.hole_num}}
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let score; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
